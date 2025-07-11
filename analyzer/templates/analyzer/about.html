@@ -1,0 +1,91 @@
+{% extends 'analyzer/base.html' %}
+{% load static %}
+{% block title %}About - MatchMyResume{% endblock %}
+
+{% block content %}
+<style>
+  .about-hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('{% static "analyzer/images/abou.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+  }
+  .about-hero h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  .icon-box i {
+    font-size: 2rem;
+    color: #0d6efd;
+  }
+</style>
+
+<!-- 🔷 Hero Section -->
+<section class="about-hero">
+  <div class="container">
+    <h1>Why MatchMyResume?</h1>
+    <p class="lead mt-3">Because your resume deserves to reach real recruiters. Let's make it ATS-friendly.</p>
+  </div>
+</section>
+
+<!-- 🔍 How It Works -->
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center text-primary mb-5"> How It Works</h2>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm text-center p-4 icon-box">
+          <i class="fas fa-file-upload mb-3"></i>
+          <h5>Step 1: Upload Resume</h5>
+          <p>Upload your resume (PDF or DOCX). We extract skills, tools, and experience using NLP.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm text-center p-4 icon-box">
+          <i class="fas fa-scroll mb-3"></i>
+          <h5>Step 2: Add Job Description</h5>
+          <p>Paste the job description you’re targeting. Our engine pulls out expected keywords.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm text-center p-4 icon-box">
+          <i class="fas fa-brain mb-3"></i>
+          <h5>Step 3: AI Analysis</h5>
+          <p>We use TF-IDF + Cosine Similarity to calculate match score based on keyword overlap.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm text-center p-4 icon-box">
+          <i class="fas fa-lightbulb mb-3"></i>
+          <h5>Step 4: Get Feedback</h5>
+          <p>See matched/missing skills, improvement suggestions, and a smart match score.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 💡 Tech Stack -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4"> Built With Love and Code</h2>
+    <div class="row text-center g-4">
+      <div class="col-md-3"><i class="fab fa-python fa-2x text-info"></i><p>Python</p></div>
+      <div class="col-md-3"><i class="fab fa-python fa-2x text-success me-2"></i><p>Django</p></div>
+      <div class="col-md-3"><i class="fas fa-robot fa-2x text-primary"></i><p>ML (TF-IDF)</p></div>
+      <div class="col-md-3"><i class="fab fa-bootstrap fa-2x text-purple"></i><p>Bootstrap</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 🚀 CTA -->
+<div class="text-center my-5">
+  <a href="{% url 'upload_resume' %}" class="btn btn-lg btn-primary">
+     Try Resume Analyzer Now
+  </a>
+</div>
+{% endblock %}

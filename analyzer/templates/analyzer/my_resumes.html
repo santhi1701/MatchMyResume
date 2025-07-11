@@ -1,0 +1,34 @@
+{% extends 'analyzer/base.html' %}
+{% block title %}My Resumes{% endblock %}
+{% block content %}
+<div class="container mt-5">
+  <h3 class="mb-4 text-center text-primary">📁 My Uploaded Resumes</h3>
+
+  {% if resumes %}
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>📄 File</th>
+            <th>🕒 Uploaded At</th>
+            <th>🔗 Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for resume in resumes %}
+            <tr>
+              <td>{{ resume.file.name|cut:"resumes/" }}</td>
+              <td>{{ resume.uploaded_at|date:"M d, Y H:i" }}</td>
+              <td>
+                <a href="{{ resume.file.url }}" class="btn btn-sm btn-outline-primary" target="_blank">Download</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <p class="text-center text-muted">No resumes uploaded yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

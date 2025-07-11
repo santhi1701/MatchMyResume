@@ -1,0 +1,96 @@
+{% extends 'analyzer/base.html' %}
+{% block title %}Upload Resume - MatchMyResume{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+  <h3 class="text-center text-primary mb-4"> MatchMyResume - ATS Analyzer</h3>
+
+  <!-- Resume Upload Form -->
+  <form method="post" enctype="multipart/form-data" class="card p-4 shadow-lg">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="resume" class="form-label">Upload Resume (.pdf or .docx)</label>
+      <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.docx" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="job_description" class="form-label">Paste Job Description</label>
+      <textarea class="form-control" id="job_description" name="job_description" rows="5" placeholder="Paste job description here..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">
+      <i class="fas fa-chart-line me-1"></i> Analyze Resume
+    </button>
+  </form>
+
+  <!-- Results Section -->
+  {% if score %}
+  <div class="card mt-4 p-4 shadow-sm">
+    <h4 class="text-primary mb-3"> Match Score</h4>
+
+    <!-- Progress Bar -->
+    <div class="progress mb-4" style="height: 25px;">
+      <div class="progress-bar 
+        {% if score >= 75 %}bg-success
+        {% elif score >= 50 %}bg-warning
+        {% else %}bg-danger
+        {% endif %}" role="progressbar" style="width: {{ score }}%;" aria-valuenow="{{ score }}" aria-valuemin="0" aria-valuemax="100">
+        {{ score }}%
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <p class="lead">{{ feedback.summary }}</p>
+
+    <!-- Suggestions -->
+    {% if feedback.suggestions %}
+    <div class="mt-3">
+      <h5 class="text-info"> Suggestions:</h5>
+      <ul>
+        {% for suggestion in feedback.suggestions %}
+          <li>{{ suggestion }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <!-- Matched Skills -->
+    <h5 class="text-success mt-4"> Matched Skills</h5>
+    <div class="d-flex flex-wrap gap-2 mb-3">
+      {% for skill in feedback.matched %}
+        <span class="badge bg-success">{{ skill }}</span>
+      {% endfor %}
+    </div>
+
+    <!-- Missing Skills -->
+    <h5 class="text-danger"> Missing Skills</h5>
+    <div class="d-flex flex-wrap gap-2">
+      {% for skill in feedback.missing %}
+        <span class="badge bg-danger">{{ skill }}</span>
+      {% endfor %}
+    </div>
+
+    <!-- PDF Export -->
+    <div class="text-end mt-4">
+      <a href="{% url 'export_pdf' %}" class="btn btn-outline-primary">
+        <i class="fas fa-file-pdf me-1"></i> Download Report as PDF
+      </a>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<!-- Client-side Validation -->
+<script>
+  document.querySelector('form').addEventListener('submit', function(e) {
+    const file = document.getElementById('resume').value;
+    const job = document.getElementById('job_description').value.trim();
+    if (!file || !job) {
+      alert("Please upload a resume and enter the job description.");
+      e.preventDefault();
+    }
+  });
+</script>
+{% endblock %}

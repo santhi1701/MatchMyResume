@@ -1,0 +1,83 @@
+{% extends 'analyzer/base.html' %}
+{% load static %}
+{% block title %}Home - MatchMyResume{% endblock %}
+
+{% block content %}
+<style>
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(rgba(176, 181, 179, 0.6), rgba(0,0,0,0.6)),
+              url("{% static 'analyzer/images/home.jpg' %}") no-repeat center center;
+  background-size: cover;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  color: #f8f9fa;
+}
+
+.features-section {
+  background: #f8f9fa;
+  padding: 60px 0;
+}
+.feature-icon {
+  font-size: 2rem;
+  color: #198754;
+}
+</style>
+
+<!-- 🔷 Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+   
+    <h1 class="mt-3">Welcome to MatchMyResume</h1>
+    <p>Boost your job chances with our AI-powered resume matching and ATS analysis system.</p>
+
+    {% if user.is_authenticated %}
+      <a href="{% url 'upload_resume' %}" class="btn btn-success mt-4 px-4">
+        <i class="fas fa-rocket me-1"></i> Start Resume Analysis
+      </a>
+    {% else %}
+      <a href="{% url 'register' %}" class="btn btn-light mt-4 px-4">
+        <i class="fas fa-user-plus me-1"></i> Get Started
+      </a>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ✅ What We Offer Section -->
+<section class="features-section text-center">
+  <div class="container">
+    <h2 class="mb-5">What We Offer</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <i class="fas fa-file-alt feature-icon mb-3"></i>
+        <h5>Resume-Job Matching</h5>
+        <p>We match your resume against job descriptions using AI + TF-IDF scoring.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-chart-line feature-icon mb-3"></i>
+        <h5>ATS Compatibility</h5>
+        <p>Get match scores just like a recruiter sees in real ATS systems.</p>
+      </div>
+      <div class="col-md-4">
+        <i class="fas fa-lightbulb feature-icon mb-3"></i>
+        <h5>Actionable Feedback</h5>
+        <p>Improve with personalized keyword suggestions & resume insights.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

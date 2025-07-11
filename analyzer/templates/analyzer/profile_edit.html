@@ -1,0 +1,32 @@
+{% extends 'analyzer/base.html' %}
+{% block title %}Edit Profile{% endblock %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+  <div class="card p-4 shadow-lg">
+    <h3 class="text-center text-primary mb-3">
+      <i class="fas fa-user-edit"></i> Edit Your Profile
+    </h3>
+
+    <form method="post" novalidate>
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label">{{ field.label }}</label>
+          {{ field }}
+          {% if field.errors %}
+            <div class="text-danger small">
+              {% for error in field.errors %}
+                {{ error }}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="btn btn-success w-100">Update Profile</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
