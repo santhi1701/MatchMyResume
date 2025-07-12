@@ -44,12 +44,11 @@
 
 ## 📸 Screenshots
 
-### Resume Upload & Analysis
-![Upload Screenshot](static/analyzer/images/upload_screenshot.jpg)
+### 🏠 Home Page
+![Home Screenshot](https://raw.githubusercontent.com/santhi1701/MatchMyResume/main/analyzer/static/analyzer/images/home_screenshot.jpg)
 
-### About Page
-![Result Screenshot](static/analyzer/images/about_screenshot.jpg)
+### 📄 About Page
+![About Screenshot](https://raw.githubusercontent.com/santhi1701/MatchMyResume/main/analyzer/static/analyzer/images/about_screenshot.jpg)
 
-### Home Page 
-![Home Screenshot](static/analyzer/images/home_screenshot.jpg)
-
+### 🧠 Resume Upload Page
+![Upload Screenshot](https://raw.githubusercontent.com/santhi1701/MatchMyResume/main/analyzer/static/analyzer/images/upload_screenshot.jpg)
