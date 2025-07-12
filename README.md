@@ -44,12 +44,12 @@
 
 ## 📸 Screenshots
 
-### 🧠 Resume Upload & Analysis
-![Upload Screenshot](static/analyzer/images/upload_screenshot.png)
+### Resume Upload & Analysis
+![Upload Screenshot](static/analyzer/images/upload_screenshot.jpg)
 
-### Abot Page
-![Result Screenshot](static/analyzer/images/about_screenshot.png)
+### About Page
+![Result Screenshot](static/analyzer/images/about_screenshot.jpg)
 
-### 🏠 Home Page (Hero Section)
-![Home Screenshot](static/analyzer/images/home_screenshot.png)
+### Home Page 
+![Home Screenshot](static/analyzer/images/home_screenshot.jpg)
 
